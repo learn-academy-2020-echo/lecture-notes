@@ -168,3 +168,11 @@ const getEvens = (array) => {
 }
 console.log(getEvens(arrayOfNumbers))
 console.log(getEvens([1, 2, 3, 4, 5]))
+
+
+
+// Interesting Error Messages
+
+// 1) "Uncaught TypeError: x-y-z.methodName is not a function" - probably means you are trying to apply a built in method to the wrong data type
+
+// 2) A function is logging undefined - probably means you are missing a return, one return per fat arrow
