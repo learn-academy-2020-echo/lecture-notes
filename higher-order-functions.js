@@ -21,14 +21,14 @@
 // Can have up to three arguments: value, index, array the method was called on
 
 // this is semantically named
-// [2, 3, 4, 5].forEach((value, index) => {
-//   console.log("a single iteration:", "value:", value * 2, "index:", index)
-// })
+[2, 3, 4, 5].forEach((value, index) => {
+  console.log("a single iteration:", "value:", value * 2, "index:", index)
+})
 
 // here is an example of changing the variable names
-// [2, 3, 4, 5].forEach((banana, joe) => {
-//   console.log("a single iteration:", "value:", banana * 2, "index:", joe)
-// })
+[2, 3, 4, 5].forEach((banana, joe) => {
+  console.log("a single iteration:", "value:", banana * 2, "index:", joe)
+})
 
 // don't do this - it is super confusing! Name your placeholders clearly.
 // [2, 3, 4, 5].forEach((index, value) => {
@@ -37,30 +37,30 @@
 
 
 // this is just value
-// [2, 3, 4, 5].forEach(value => {
-//   console.log("a single iteration:", "value:", value * 2)
-// })
+[2, 3, 4, 5].forEach(value => {
+  console.log("a single iteration:", "value:", value * 2)
+})
 
 // this is just index
-// [2, 3, 4, 5].forEach((value, index) => {
-//   console.log("a single iteration:", "index:", index)
-// })
+[2, 3, 4, 5].forEach((value, index) => {
+  console.log("a single iteration:", "index:", index)
+})
 
 // all three arguments: value, index, array
-// [2, 3, 4, 5].forEach((value, index, array) => {
-//   console.log("a single iteration:", "index:", index, "array:", array)
-// })
+[2, 3, 4, 5].forEach((value, index, array) => {
+  console.log("a single iteration:", "index:", index, "array:", array)
+})
 
 
 // one level of abstraction, applying the built in method to a variable
-// var myArray = [2, 3, 4, 5]
-//
-// myArray.forEach(value => {
-//   console.log("a single iteration:", "value:", value * 2)
-// })
+var myArray = [2, 3, 4, 5]
 
-// var myString = "hello"
-// console.log(myString.toUpperCase())
+myArray.forEach(value => {
+  console.log("a single iteration:", "value:", value * 2)
+})
+
+var myString = "hello"
+console.log(myString.toUpperCase())
 // --> "HELLO"
 
 
@@ -69,55 +69,55 @@
 // .map() - built in method, acts on array for the purpose of iteration, takes a function as an argument, returns an array
 
 // map with value
-// var mappedArray = [2, 3, 4, 5].map(value => {
-//   return value * 2
-// })
-// console.log(mappedArray)
+var mappedArray = [2, 3, 4, 5].map(value => {
+  return value * 2
+})
+console.log(mappedArray)
 
 // map with value and index
-// var mappedArray = [2, 3, 4, 5].map((value, index) => {
-//   return index
-// })
-// console.log(mappedArray)
+var mappedArray = [2, 3, 4, 5].map((value, index) => {
+  return index
+})
+console.log(mappedArray)
 
 // determine if the numbers are odd or even
-// var mappedArray = [2, 3, 4, 5].map(value => {
-//   if(value % 2 === 0){
-//     return "even"
-//   } else if(value % 2 !== 0){
-//     return "odd"
-//   } else {
-//     return "something went wrong"
-//   }
-// })
-// console.log(mappedArray)
+var mappedArray = [2, 3, 4, 5].map(value => {
+  if(value % 2 === 0){
+    return "even"
+  } else if(value % 2 !== 0){
+    return "odd"
+  } else {
+    return "something went wrong"
+  }
+})
+console.log(mappedArray)
 
 // experimenting with edge cases
-// var mappedArray = [-6, -3, 2, 3, 4, 5, "hello"].map(value => {
-//   if(value % 2 === 0){
-//     return "even"
-//   } else if(value % 2 === 1 || value % 2 === -1){
-//     return "odd"
-//   } else {
-//     return "something went wrong"
-//   }
-// })
-// console.log(mappedArray)
+var mappedArray = [-6, -3, 2, 3, 4, 5, "hello"].map(value => {
+  if(value % 2 === 0){
+    return "even"
+  } else if(value % 2 === 1 || value % 2 === -1){
+    return "odd"
+  } else {
+    return "something went wrong"
+  }
+})
+console.log(mappedArray)
 
 // wrap map into a function
 // every function must have a return
 // return the map function
-// const evenOrOdd = (array) => {
-//   return array.map(value => {
-//     if(value % 2 === 0){
-//       return "even"
-//     } else {
-//       return "odd"
-//     }
-//   })
-// }
-//
-// console.log(evenOrOdd([2, 3, 4, 5]))
+const evenOrOdd = (array) => {
+  return array.map(value => {
+    if(value % 2 === 0){
+      return "even"
+    } else {
+      return "odd"
+    }
+  })
+}
+
+console.log(evenOrOdd([2, 3, 4, 5]))
 
 // creating a varibale for the map function and return the variable
 const evenOrOdd = (array) => {
