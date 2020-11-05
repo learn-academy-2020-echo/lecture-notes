@@ -63,6 +63,108 @@
 // console.log(myString.toUpperCase())
 // --> "HELLO"
 
-// .map()
 
-// .filter()
+
+
+// .map() - built in method, acts on array for the purpose of iteration, takes a function as an argument, returns an array
+
+// map with value
+// var mappedArray = [2, 3, 4, 5].map(value => {
+//   return value * 2
+// })
+// console.log(mappedArray)
+
+// map with value and index
+// var mappedArray = [2, 3, 4, 5].map((value, index) => {
+//   return index
+// })
+// console.log(mappedArray)
+
+// determine if the numbers are odd or even
+// var mappedArray = [2, 3, 4, 5].map(value => {
+//   if(value % 2 === 0){
+//     return "even"
+//   } else if(value % 2 !== 0){
+//     return "odd"
+//   } else {
+//     return "something went wrong"
+//   }
+// })
+// console.log(mappedArray)
+
+// experimenting with edge cases
+// var mappedArray = [-6, -3, 2, 3, 4, 5, "hello"].map(value => {
+//   if(value % 2 === 0){
+//     return "even"
+//   } else if(value % 2 === 1 || value % 2 === -1){
+//     return "odd"
+//   } else {
+//     return "something went wrong"
+//   }
+// })
+// console.log(mappedArray)
+
+// wrap map into a function
+// every function must have a return
+// return the map function
+// const evenOrOdd = (array) => {
+//   return array.map(value => {
+//     if(value % 2 === 0){
+//       return "even"
+//     } else {
+//       return "odd"
+//     }
+//   })
+// }
+//
+// console.log(evenOrOdd([2, 3, 4, 5]))
+
+// creating a varibale for the map function and return the variable
+const evenOrOdd = (array) => {
+  let mappedArray = array.map(value => {
+    if(value % 2 === 0){
+      return "even"
+    } else {
+      return "odd"
+    }
+  })
+  return mappedArray
+}
+
+console.log(evenOrOdd([2, 3, 4, 5]))
+console.log(evenOrOdd([4, 5, 6]))
+console.log(evenOrOdd([9, 3, 4, 5]))
+
+// behind the scenes
+// const evenOrOdd = ([2, 3, 4, 5]) => {
+//   let mappedArray = [2, 3, 4, 5].map(value => {
+//     if(value % 2 === 0){
+//       return "even"
+//     } else {
+//       return "odd"
+//     }
+//   })
+//   return mappedArray
+// }
+//
+// console.log(evenOrOdd([2, 3, 4, 5]))
+// console.log(evenOrOdd([4, 5, 6]))
+// console.log(evenOrOdd([9, 3, 4, 5]))
+
+
+
+
+
+// .filter() - built in method, acts on arrays as iterator, takes a function as an argument, returns array, built in if/else statement
+
+// return only numbers that are even
+
+var arrayOfNumbers = [2, 3, 4, 5, 6, 7]
+
+const getEvens = (array) => {
+  return array.filter(value => {
+    return value % 2 === 0
+  })
+}
+console.log(getEvens(arrayOfNumbers))
+console.log(getEvens([1, 2, 3, 4, 5]))
