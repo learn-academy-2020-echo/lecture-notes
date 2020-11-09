@@ -68,3 +68,39 @@ console.log(me);
 me.takeOutLoan()
 console.log(me.debt);
 console.log(me);
+
+// ***Class Inheritance*******************************************************
+
+// Parent class
+// broad, generic definitions
+class Loan {
+  // establishes key:value pairs upon creation of an object
+  constructor() {
+    this.payDate = "1st"
+  }
+
+  getInfo() {
+    return `Your due date is the ${ this.payDate }.`
+  }
+}
+
+// Child class
+class AutoLoan extends Loan {
+  constructor() {
+    // passes attributes from the parent to the child
+    super()
+    this.debt = 10000
+    this.interest = 4
+  }
+
+  refinance() {
+    this.interest = 3
+    return "Success! Your rate went down."
+  }
+}
+
+var myCar = new AutoLoan()
+console.log(myCar.interest);
+console.log(myCar.getInfo());
+console.log(myCar.refinance());
+console.log(myCar);
