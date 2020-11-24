@@ -1,4 +1,5 @@
-# Ruby!
+# Ruby Ruby Ruby Ruby!
+# 11/24/2020
 
 # Yukihiro Matsumoto
 # Mats is nice and so we are nice - MINASWAN
@@ -12,6 +13,7 @@
 # Object-oriented - (OOP) form is the class, object is the reality, Ruby is VERY object-oriented
 
 # Ruby console - $ irb
+# Exit the ruby console > exit
 
 # Data types
 
