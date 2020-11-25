@@ -2,35 +2,41 @@
 # 11/24/2020
 
 # File must have the extension .rb
+# In terminal: $ ruby filname.rb
 
 my_name = 'Sarah'
 
 # Returns info in terminal
-# puts my_name
-# puts 'hello!'
+puts my_name
+puts 'hello!'
 
 # Returns info without a line break
-# print 123
-# print 456
-# print 789
+print 123
+print 456
+print 789
 
-# p 'hello'
+p 'hello'
+p my_name
 
-# Error message that is telling you to check for a missing end: " conditionals.rb:24: syntax error, unexpected end-of-input, expecting `end' "
+
+# if/else/end
 
 num = 10
-# if/else/end
 if num > 20
   p "#{num} is greater than 20"
 else
   p "#{num} is less than 20"
 end
 
-# Gets
+
+# Error message that is telling you to check for a missing end: " conditionals.rb:24: syntax error, unexpected end-of-input, expecting `end' "
+
+# User Input: Gets
 # Asks the user for a number
 puts 'Enter a number:'
 
 # Assings the user input to a variable and removes the extra character
+# Gets always returns information as a string
 num = gets.chomp
 
 # Prints the variable
