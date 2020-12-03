@@ -10,14 +10,6 @@ class Book
   end
 end
 
-# my_book = Book.new
-# p my_book
-# p my_book.page
-# p my_book.author
-#
-# catch = Book.new
-# p catch.read 10
-
 
 # Stories
 # 1 - Create a book class
