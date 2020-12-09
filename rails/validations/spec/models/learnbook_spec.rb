@@ -12,10 +12,10 @@ RSpec.describe Learnbook, type: :model do
     expect(learnbook_test.errors[:username]).to_not be_empty
   end
 
-  it 'is not valid without an email' do
-    learnbook_test = Learnbook.create username: 'Chris', profile: 'Chris doing awesome stuff.'
-    expect(learnbook_test.errors[:email]).to_not be_empty
-  end
+  # it 'is not valid without an email' do
+  #   learnbook_test = Learnbook.create username: 'Chris', profile: 'Chris doing awesome stuff.'
+  #   expect(learnbook_test.errors[:email]).to_not be_empty
+  # end
 
   it 'is not valid with username less than 3 characters' do
     learnbook_test = Learnbook.create username: 'C', email: 'chris@learnbook.com', profile: 'Chris doing awesome stuff.'
