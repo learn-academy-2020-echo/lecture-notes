@@ -10,6 +10,13 @@ class HomeController < ApplicationController
   end
 
   def beverage
+    @n = params[:number1]
+    @n2 = params[:number2]
+    if @n.to_i < @n2.to_i
+      @outcome = 'You win!'
+    else
+      @outcome = 'Try agian'
+    end
   end
 
   def tacos
