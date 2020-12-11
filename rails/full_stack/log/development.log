@@ -1,0 +1,700 @@
+  [1m[35m (467.3ms)[0m  [1m[35mCREATE DATABASE "full_stack_development" ENCODING = 'unicode'[0m
+  [1m[35m (1023.8ms)[0m  [1m[35mCREATE DATABASE "full_stack_test" ENCODING = 'unicode'[0m
+  [1m[35m (29.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (45.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(663865775298485235)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateHerbs (20201210191148)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (63.0ms)[0m  [1m[35mCREATE TABLE "herbs" ("id" bigserial primary key, "name" character varying, "is_watered" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201210191148"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (27.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (8.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-12-10 19:12:25.153995"], ["updated_at", "2020-12-10 19:12:25.153995"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(663865775298485235)[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHerb Create (1.3ms)[0m  [1m[32mINSERT INTO "herbs" ("name", "is_watered", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Basil"], ["is_watered", "yes"], ["created_at", "2020-12-10 19:12:53.307121"], ["updated_at", "2020-12-10 19:12:53.307121"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (19.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHerb Create (0.4ms)[0m  [1m[32mINSERT INTO "herbs" ("name", "is_watered", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Thyme"], ["is_watered", "no"], ["created_at", "2020-12-10 19:13:08.602795"], ["updated_at", "2020-12-10 19:13:08.602795"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (12.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHerb Create (6.2ms)[0m  [1m[32mINSERT INTO "herbs" ("name", "is_watered", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Oregano"], ["is_watered", "yes"], ["created_at", "2020-12-10 19:13:35.576532"], ["updated_at", "2020-12-10 19:13:35.576532"]]
+  [1m[35m (13.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mHerb Load (0.5ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/" for ::1 at 2020-12-10 11:20:05 -0800
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/sarahproctor/.rvm/gems/ruby-2.7.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/sarahproctor/.rvm/gems/ruby-2.7.0/gems/railties-6.0.3.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 17.6ms | Allocations: 409)
+Completed 200 OK in 190ms (Views: 43.9ms | ActiveRecord: 0.0ms | Allocations: 2559)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 11:20:14 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  Rendered herb/index.html.erb within layouts/application (Duration: 17.8ms | Allocations: 98)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/sarahproctor/Desktop/learn/lecture-notes/rails/full_stack/public/packs
+[Webpacker] Hash: 76145d9ce4575ebaa29b
+Version: webpack 4.44.2
+Time: 30599ms
+Built at: 12/10/2020 11:21:09 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-c229f7c7014cf8c8d494.js    124 KiB  application  [emitted] [immutable]  application
+js/application-c229f7c7014cf8c8d494.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-c229f7c7014cf8c8d494.js js/application-c229f7c7014cf8c8d494.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 55626ms (Views: 55612.8ms | ActiveRecord: 0.0ms | Allocations: 16758)
+
+
+  [1m[36mHerb Load (0.4ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/herbs" for ::1 at 2020-12-10 11:25:06 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  Rendered herb/index.html.erb within layouts/application (Duration: 80.3ms | Allocations: 3661)
+Completed 500 Internal Server Error in 99ms (ActiveRecord: 0.0ms | Allocations: 5042)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Herb Garden</h1>
+
+<ul>
+  <%= @herbs.each do |herb| %>
+  <li><%= herb.name %></li>
+  <%= end %>
+</ul>
+
+):
+1:    <h1>Herb Garden</h1>
+2:    
+3:    <ul>
+4:      <%= @herbs.each do |herb| %>
+5:      <li><%= herb.name %></li>
+6:      <%= end %>
+7:    </ul>
+  
+app/views/herb/index.html.erb:6: syntax error, unexpected `end'
+app/views/herb/index.html.erb:10: syntax error, unexpected `end', expecting ')'
+app/views/herb/index.html.erb:6: syntax error, unexpected `end'
+app/views/herb/index.html.erb:10: syntax error, unexpected `end', expecting ')'
+app/views/herb/index.html.erb:6: syntax error, unexpected `end'
+app/views/herb/index.html.erb:10: syntax error, unexpected `end', expecting ')'
+app/views/herb/index.html.erb:6: syntax error, unexpected `end'
+app/views/herb/index.html.erb:10: syntax error, unexpected `end', expecting ')'
+app/views/herb/index.html.erb:6: syntax error, unexpected `end'
+app/views/herb/index.html.erb:10: syntax error, unexpected `end', expecting ')'
+app/views/herb/index.html.erb:6: syntax error, unexpected `end'
+app/views/herb/index.html.erb:10: syntax error, unexpected `end', expecting ')'
+Started GET "/herbs" for ::1 at 2020-12-10 11:26:51 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (124.1ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 379.8ms | Allocations: 3820)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1106ms (Views: 827.0ms | ActiveRecord: 274.7ms | Allocations: 8773)
+
+
+  [1m[36mHerb Load (0.6ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started GET "/herb/2" for ::1 at 2020-12-10 11:34:54 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mHerb Load (0.8ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 90)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 373ms (Views: 268.3ms | ActiveRecord: 30.1ms | Allocations: 8732)
+
+
+Started GET "/herb/2" for ::1 at 2020-12-10 11:35:21 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mHerb Load (15.6ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 89)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 109ms (Views: 86.6ms | ActiveRecord: 15.6ms | Allocations: 5484)
+
+
+Started GET "/herb/2" for ::1 at 2020-12-10 11:36:10 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mHerb Load (59.8ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 111)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 698ms (Views: 632.8ms | ActiveRecord: 59.8ms | Allocations: 5516)
+
+
+Started GET "/herb/1" for ::1 at 2020-12-10 11:38:37 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mHerb Load (0.8ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 10)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 32.4ms | ActiveRecord: 0.8ms | Allocations: 4526)
+
+
+Started GET "/herb/3" for ::1 at 2020-12-10 11:38:41 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mHerb Load (4.3ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 0.3ms | Allocations: 10)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 29.2ms | ActiveRecord: 4.3ms | Allocations: 4515)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 11:46:22 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (3.1ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 57.1ms | Allocations: 3461)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 332ms (Views: 309.7ms | ActiveRecord: 3.1ms | Allocations: 8592)
+
+
+Started GET "/herb/1" for ::1 at 2020-12-10 11:46:31 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mHerb Load (3.1ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 108)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 55ms (Views: 30.0ms | ActiveRecord: 18.4ms | Allocations: 4889)
+
+
+Started GET "/herb/2" for ::1 at 2020-12-10 11:46:50 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mHerb Load (1.1ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 0.1ms | Allocations: 10)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 22.2ms | ActiveRecord: 1.1ms | Allocations: 4524)
+
+
+Started GET "/herb/1" for ::1 at 2020-12-10 11:48:38 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mHerb Load (2.5ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 2.2ms | Allocations: 163)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 46ms (Views: 39.1ms | ActiveRecord: 2.5ms | Allocations: 5572)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 11:48:40 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (29.4ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 32.0ms | Allocations: 883)
+[Webpacker] Everything's up-to-date. Nothing to do
+Started GET "/herb/2" for ::1 at 2020-12-10 11:48:45 -0800
+Completed 200 OK in 5142ms (Views: 5110.5ms | ActiveRecord: 29.4ms | Allocations: 5709)
+
+
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mHerb Load (1.9ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 42)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 19.3ms | ActiveRecord: 2.3ms | Allocations: 4639)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 11:48:47 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (0.6ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 741)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 55ms (Views: 52.9ms | ActiveRecord: 0.6ms | Allocations: 4690)
+
+
+Started GET "/herb/3" for ::1 at 2020-12-10 11:48:48 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mHerb Load (63.5ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 41)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 5690ms (Views: 5623.4ms | ActiveRecord: 63.5ms | Allocations: 4557)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 11:48:56 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (13.9ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 17.2ms | Allocations: 738)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 25.7ms | ActiveRecord: 13.9ms | Allocations: 4697)
+
+
+  [1m[36mHerb Load (3.2ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Started GET "/herb/new" for ::1 at 2020-12-10 15:18:23 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"new"}
+  [1m[36mHerb Load (0.8ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+Completed 404 Not Found in 530ms (ActiveRecord: 368.1ms | Allocations: 1956)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Herb with 'id'=new):
+  
+app/controllers/herb_controller.rb:8:in `show'
+Started GET "/herb/new" for ::1 at 2020-12-10 15:20:18 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"new"}
+  [1m[36mHerb Load (4.4ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+Completed 404 Not Found in 9ms (ActiveRecord: 4.4ms | Allocations: 1300)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Herb with 'id'=new):
+  
+app/controllers/herb_controller.rb:8:in `show'
+Started GET "/herbs" for ::1 at 2020-12-10 15:20:30 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (8.8ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 77.5ms | Allocations: 3195)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 495ms (Views: 479.9ms | ActiveRecord: 8.8ms | Allocations: 8058)
+
+
+Started GET "/herb/new" for ::1 at 2020-12-10 15:20:35 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"new"}
+  [1m[36mHerb Load (632.0ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+Completed 404 Not Found in 637ms (ActiveRecord: 632.0ms | Allocations: 1302)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Herb with 'id'=new):
+  
+app/controllers/herb_controller.rb:8:in `show'
+Started GET "/herb/new" for ::1 at 2020-12-10 15:21:18 -0800
+Processing by HerbController#new as HTML
+  Rendering herb/new.html.erb within layouts/application
+  Rendered herb/new.html.erb within layouts/application (Duration: 214.1ms | Allocations: 4231)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1398ms (Views: 429.2ms | ActiveRecord: 951.2ms | Allocations: 11387)
+
+
+Started GET "/herb/new" for ::1 at 2020-12-10 15:22:49 -0800
+Processing by HerbController#new as HTML
+  Rendering herb/new.html.erb within layouts/application
+  Rendered herb/new.html.erb within layouts/application (Duration: 10.6ms | Allocations: 833)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 195ms (Views: 57.2ms | ActiveRecord: 0.0ms | Allocations: 5692)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 15:24:22 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (35.0ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 39.5ms | Allocations: 925)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 102ms (Views: 59.4ms | ActiveRecord: 35.0ms | Allocations: 5807)
+
+
+Started GET "/herb/new" for ::1 at 2020-12-10 15:24:25 -0800
+Processing by HerbController#new as HTML
+  Rendering herb/new.html.erb within layouts/application
+  Rendered herb/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 831)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 41.2ms | ActiveRecord: 0.0ms | Allocations: 4930)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 15:24:27 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+Started GET "/herb/new" for ::1 at 2020-12-10 15:25:01 -0800
+Started POST "/herbs" for ::1 at 2020-12-10 15:25:01 -0800
+  [1m[36mHerb Load (14547.0ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 14571.0ms | Allocations: 1641)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 47466ms (Views: 32917.7ms | ActiveRecord: 14547.0ms | Allocations: 10490)
+
+
+Started GET "/herb/new" for ::1 at 2020-12-10 15:25:29 -0800
+Processing by HerbController#new as HTML
+  Rendering herb/new.html.erb within layouts/application
+  Rendered herb/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 572)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 228ms (Views: 225.5ms | ActiveRecord: 0.0ms | Allocations: 4525)
+
+
+  
+ActionController::RoutingError (No route matches [POST] "/herbs"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Processing by HerbController#new as HTML
+  Rendering herb/new.html.erb within layouts/application
+  Rendered herb/new.html.erb within layouts/application (Duration: 20.1ms | Allocations: 576)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 36.2ms | ActiveRecord: 0.0ms | Allocations: 4778)
+
+
+Started POST "/herbs" for ::1 at 2020-12-10 15:35:43 -0800
+Processing by HerbController#create as HTML
+  Parameters: {"authenticity_token"=>"scZBaTmKaDCKVWg/6bW+4vRVj7OoJgH23KkJSVw930NV1yrEP642HET9tYwIwh4uiWpHUgBgNkZHFbFMOvTRiA==", "herb"=>{"name"=>"Test", "is_watered"=>"no"}, "commit"=>"Add Herb"}
+  [1m[35m (295.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/herb_controller.rb:16:in `create'
+  [1m[36mHerb Create (2541.8ms)[0m  [1m[32mINSERT INTO "herbs" ("name", "is_watered", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Test"], ["is_watered", "no"], ["created_at", "2020-12-10 23:35:48.095430"], ["updated_at", "2020-12-10 23:35:48.095430"]]
+  ↳ app/controllers/herb_controller.rb:16:in `create'
+  [1m[35m (190.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/herb_controller.rb:16:in `create'
+No template found for HerbController#create, rendering head :no_content
+Completed 204 No Content in 3084ms (ActiveRecord: 3027.7ms | Allocations: 7145)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 15:36:36 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (1390.3ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 1414.2ms | Allocations: 859)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1496ms (Views: 101.2ms | ActiveRecord: 1390.3ms | Allocations: 4983)
+
+
+Started GET "/herb/new" for ::1 at 2020-12-10 15:39:40 -0800
+Processing by HerbController#new as HTML
+  Rendering herb/new.html.erb within layouts/application
+  Rendered herb/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 635)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 371ms (Views: 50.1ms | ActiveRecord: 268.0ms | Allocations: 7630)
+
+
+Started POST "/herbs" for ::1 at 2020-12-10 15:39:57 -0800
+Processing by HerbController#create as HTML
+  Parameters: {"authenticity_token"=>"ikso+TWAnZYeNqssipgzrAwx75Ip2BSMOK/eWMrJwL36O3wX6pGa1pLHyaCz3HziAdwaL6hRrtQkgSTYSIxLzg==", "herb"=>{"name"=>"Cilantro", "is_watered"=>"yes"}, "commit"=>"Add Herb"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/herb_controller.rb:16:in `create'
+  [1m[36mHerb Create (3.4ms)[0m  [1m[32mINSERT INTO "herbs" ("name", "is_watered", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Cilantro"], ["is_watered", "yes"], ["created_at", "2020-12-10 23:39:57.920023"], ["updated_at", "2020-12-10 23:39:57.920023"]]
+  ↳ app/controllers/herb_controller.rb:16:in `create'
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/herb_controller.rb:16:in `create'
+Redirected to http://localhost:3000/herbs
+Completed 302 Found in 26ms (ActiveRecord: 11.3ms | Allocations: 2925)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 15:39:58 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (0.8ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 13.9ms | Allocations: 846)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 51ms (Views: 48.7ms | ActiveRecord: 0.8ms | Allocations: 4807)
+
+
+Started GET "/herb/5" for ::1 at 2020-12-10 15:40:04 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mHerb Load (0.8ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 165)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 34ms (Views: 20.2ms | ActiveRecord: 2.3ms | Allocations: 4968)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 15:40:19 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (0.9ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 836)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 162ms (Views: 159.6ms | ActiveRecord: 0.9ms | Allocations: 4787)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 15:50:14 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (1070.8ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 1109.9ms | Allocations: 3563)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1331ms (Views: 112.7ms | ActiveRecord: 1070.8ms | Allocations: 8687)
+
+
+Started GET "/herb/4" for ::1 at 2020-12-10 15:50:21 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mHerb Load (0.9ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 213)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28419ms (Views: 28404.8ms | ActiveRecord: 2.4ms | Allocations: 5064)
+
+
+Started GET "/herb/4" for ::1 at 2020-12-10 15:50:56 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mHerb Load (280.2ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 66)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 314ms (Views: 27.3ms | ActiveRecord: 280.2ms | Allocations: 4569)
+
+
+Started GET "/herb/4" for ::1 at 2020-12-10 15:51:58 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mHerb Load (12.7ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 16.6ms | Allocations: 223)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 134ms (Views: 112.4ms | ActiveRecord: 12.7ms | Allocations: 5619)
+
+
+Started DELETE "/herb/4" for ::1 at 2020-12-10 15:52:03 -0800
+Processing by HerbController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8oXUdEjUy3Uv2CSECUCdeZ09EiOKPlHn8N9Ky9RpINMWlL/ZTvCVWeFw+TfoNz214ALawiJ4ZldrY/LOsqAuGA==", "id"=>"4"}
+  [1m[36mHerb Load (1061.6ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:25:in `destroy'
+  [1m[35m (269.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/herb_controller.rb:26:in `destroy'
+  [1m[36mHerb Destroy (488.8ms)[0m  [1m[31mDELETE FROM "herbs" WHERE "herbs"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/herb_controller.rb:26:in `destroy'
+  [1m[35m (685.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/herb_controller.rb:26:in `destroy'
+Redirected to http://localhost:3000/herbs
+Completed 302 Found in 2543ms (ActiveRecord: 2506.0ms | Allocations: 2935)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 15:52:06 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (381.4ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 387.1ms | Allocations: 956)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 595ms (Views: 148.5ms | ActiveRecord: 381.4ms | Allocations: 5061)
+
+
+Started GET "/herb/5" for ::1 at 2020-12-10 15:59:43 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mHerb Load (4.1ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 289)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 314ms (Views: 177.0ms | ActiveRecord: 8.3ms | Allocations: 8664)
+
+
+Started GET "/herb/5/edit" for ::1 at 2020-12-10 15:59:50 -0800
+Processing by HerbController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mHerb Load (65.6ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:34:in `edit'
+  Rendering herb/edit.html.erb within layouts/application
+  Rendered herb/edit.html.erb within layouts/application (Duration: 9.6ms | Allocations: 928)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9415ms (Views: 9344.8ms | ActiveRecord: 65.6ms | Allocations: 5596)
+
+
+Started PATCH "/herb/5" for ::1 at 2020-12-10 16:00:23 -0800
+  
+ActionController::RoutingError (No route matches [PATCH] "/herb/5"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/herbs" for ::1 at 2020-12-10 16:03:49 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (0.5ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 352.4ms | Allocations: 3623)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 395ms (Views: 83.4ms | ActiveRecord: 304.5ms | Allocations: 8145)
+
+
+Started GET "/herb/5" for ::1 at 2020-12-10 16:03:52 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mHerb Load (2.2ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 2.2ms | Allocations: 126)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 45ms (Views: 24.0ms | ActiveRecord: 2.2ms | Allocations: 4739)
+
+
+Started GET "/herb/5/edit" for ::1 at 2020-12-10 16:03:54 -0800
+Processing by HerbController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mHerb Load (0.4ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:34:in `edit'
+  Rendering herb/edit.html.erb within layouts/application
+  Rendered herb/edit.html.erb within layouts/application (Duration: 8.6ms | Allocations: 666)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 39ms (Views: 34.7ms | ActiveRecord: 0.4ms | Allocations: 5166)
+
+
+Started PATCH "/herb/5" for ::1 at 2020-12-10 16:04:00 -0800
+  
+ActionController::RoutingError (No route matches [PATCH] "/herb/5"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started PATCH "/herb/5" for ::1 at 2020-12-10 16:05:06 -0800
+Processing by HerbController#update as HTML
+  Parameters: {"authenticity_token"=>"15MNVncxDCiT2Rlti5LwjBuaaAWbVB52p2EDeY5mk8Izgmb7cRVSBF1xxN5q5VBAZqWg5DMSKcY83bt86K+dCQ==", "herb"=>{"name"=>"Cilantros", "is_watered"=>"no"}, "commit"=>"Update Herb", "id"=>"5"}
+  [1m[36mHerb Load (0.7ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:38:in `update'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/herb_controller.rb:39:in `update'
+  [1m[36mHerb Update (918.5ms)[0m  [1m[33mUPDATE "herbs" SET "name" = $1, "is_watered" = $2, "updated_at" = $3 WHERE "herbs"."id" = $4[0m  [["name", "Cilantros"], ["is_watered", "no"], ["updated_at", "2020-12-11 00:05:07.203984"], ["id", 5]]
+  ↳ app/controllers/herb_controller.rb:39:in `update'
+  [1m[35m (143.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/herb_controller.rb:39:in `update'
+Redirected to http://localhost:3000/herb/5
+Completed 302 Found in 1342ms (ActiveRecord: 1075.7ms | Allocations: 6555)
+
+
+Started GET "/herb/5" for ::1 at 2020-12-10 16:05:08 -0800
+Processing by HerbController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mHerb Load (2.2ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs" WHERE "herbs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/herb_controller.rb:8:in `show'
+  Rendering herb/show.html.erb within layouts/application
+  Rendered herb/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 131)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 17.0ms | ActiveRecord: 2.2ms | Allocations: 4790)
+
+
+Started GET "/herbs" for ::1 at 2020-12-10 16:05:21 -0800
+Processing by HerbController#index as HTML
+  Rendering herb/index.html.erb within layouts/application
+  [1m[36mHerb Load (81.5ms)[0m  [1m[34mSELECT "herbs".* FROM "herbs"[0m
+  ↳ app/views/herb/index.html.erb:4
+  Rendered herb/index.html.erb within layouts/application (Duration: 85.8ms | Allocations: 800)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 108ms (Views: 25.0ms | ActiveRecord: 81.5ms | Allocations: 4761)
+
+
